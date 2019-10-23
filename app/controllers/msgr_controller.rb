@@ -1,0 +1,3 @@
+class MsgrController < ApplicationController
+
+end
