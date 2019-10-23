@@ -50,3 +50,8 @@
     <%= yield %>
   </body>
 </html>
+
+<ul>
+  <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+  <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+</ul>

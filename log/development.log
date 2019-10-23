@@ -713,3 +713,628 @@ Processing by MsgrController#login as HTML
 Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 4663)
 
 
+  [1m[35m (45.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (41.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8337826519497862275)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20191023123534)
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (371.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123534"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChatrooms (20191023123603)
+  [1m[35m (41.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "chatrooms" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123603"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChatroomUsers (20191023123614)
+  [1m[35m (40.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "chatroom_users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123614"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChatroomMessages (20191023123623)
+  [1m[35m (40.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "chatroom_messages" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123623"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserFriends (20191023123702)
+  [1m[35m (39.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "user_friends" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123702"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-23 13:03:00.919636"], ["updated_at", "2019-10-23 13:03:00.919636"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8337826519497862275)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8337826519497862275)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8337826519497862275)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (219.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "msgr_clone_development"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "msgr_clone_test"[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8337826519497862275)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20191023123534)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (47.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "displayname" character varying, "password_digest" character varying, "age" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123534"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChatrooms (20191023123603)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "chatrooms" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123603"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChatroomUsers (20191023123614)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "chatroom_users" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123614"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChatroomMessages (20191023123623)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "chatroom_messages" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123623"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserFriends (20191023123702)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "user_friends" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191023123702"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-10-23 13:06:17.096176"], ["updated_at", "2019-10-23 13:06:17.096176"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8337826519497862275)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "displayname", "password_digest", "age", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "admin_username"], ["displayname", "admin"], ["password_digest", "$2a$12$NhRUdFkG5U.8m11jzWBqTetCCCT5a5cqc7e0qVymzhOwoegrCHoQC"], ["age", 23], ["created_at", "2019-10-23 13:06:56.976780"], ["updated_at", "2019-10-23 13:06:56.976780"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2019-10-24 00:08:33 +1100
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MsgrController#login as HTML
+Completed 500 Internal Server Error in 220ms (ActiveRecord: 0.0ms | Allocations: 49439)
+
+
+  
+NoMethodError (undefined method `fetch_user' for #<MsgrController:0x00007fb17c33c540>):
+  
+activesupport (6.0.0) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+activesupport (6.0.0) lib/active_support/callbacks.rb:201:in `block (2 levels) in halting'
+actionpack (6.0.0) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.0) lib/active_support/callbacks.rb:202:in `block in halting'
+activesupport (6.0.0) lib/active_support/callbacks.rb:514:in `block in invoke_before'
+activesupport (6.0.0) lib/active_support/callbacks.rb:514:in `each'
+activesupport (6.0.0) lib/active_support/callbacks.rb:514:in `invoke_before'
+activesupport (6.0.0) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.0) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.0) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.0) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.0) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.0) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.0) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.0) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.0) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.0) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.0) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.0) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.0) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.0) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.0) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.0) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+actionpack (6.0.0) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.0.7) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.7) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.0) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.0) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.0) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2019-10-24 00:10:01 +1100
+Processing by MsgrController#login as HTML
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1549)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2817)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"session"}):
+    23: <h1> authorisation testing </h1>
+    24: 
+    25: <ul>
+    26:   <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+    27:   <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+    28: </ul>
+    29: 
+  
+app/views/msgr/login.html.erb:26
+Started GET "/" for ::1 at 2019-10-24 00:11:02 +1100
+Processing by MsgrController#login as HTML
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1302)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1953)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"session"}):
+    23: <h1> authorisation testing </h1>
+    24: 
+    25: <ul>
+    26:   <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+    27:   <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+    28: </ul>
+    29: 
+  
+app/views/msgr/login.html.erb:26
+Started GET "/" for ::1 at 2019-10-24 00:11:04 +1100
+Processing by MsgrController#login as HTML
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 1.7ms | Allocations: 984)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1426)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"session"}):
+    23: <h1> authorisation testing </h1>
+    24: 
+    25: <ul>
+    26:   <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+    27:   <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+    28: </ul>
+    29: 
+  
+app/views/msgr/login.html.erb:26
+Started GET "/" for ::1 at 2019-10-24 00:12:42 +1100
+Processing by MsgrController#login as HTML
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1203)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 2360)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"session"}):
+    23: <h1> authorisation testing </h1>
+    24: 
+    25: <ul>
+    26:   <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+    27:   <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+    28: </ul>
+    29: 
+  
+app/views/msgr/login.html.erb:26
+Started GET "/" for ::1 at 2019-10-24 00:15:59 +1100
+Processing by MsgrController#login as HTML
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 3.2ms | Allocations: 873)
+Completed 200 OK in 2239ms (Views: 2237.1ms | ActiveRecord: 0.0ms | Allocations: 1386236)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:16:22 +1100
+Processing by MsgrController#login as HTML
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 1.7ms | Allocations: 476)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.0ms | Allocations: 6612)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:18:22 +1100
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"25DR0QiPjEluvoEbF6uxnjRFSvW6PtAr6TPbN5bRuJLrqTH1q5uONe56UEkgMP2ujReTsPb8/69ehy3PzJ7erA==", "username"=>"admin_username", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin_username"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/
+Completed 200 OK in 307ms (ActiveRecord: 5.7ms | Allocations: 7015)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:18:22 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 6.2ms | Allocations: 990)
+Completed 200 OK in 1476ms (Views: 1466.3ms | ActiveRecord: 0.5ms | Allocations: 1384146)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:18:49 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"OnAHnhkcMirm4+J7KtXDG+sEISs79sB3h/LbWUyu882qDMPun3fxO79sehBt6VPLVQYV3qqbR8uLumv/bcb+tA==", "username"=>"admin_username", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin_username"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/
+Completed 200 OK in 289ms (ActiveRecord: 1.0ms | Allocations: 1725)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:18:49 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 1.9ms | Allocations: 253)
+Completed 200 OK in 29ms (Views: 23.8ms | ActiveRecord: 1.5ms | Allocations: 5995)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:24:45 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 1.4ms | Allocations: 477)
+Completed 200 OK in 20ms (Views: 12.9ms | ActiveRecord: 1.7ms | Allocations: 7431)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:24:57 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"oN4BRlpJSkTFWXsQkJ1REp5RcT1ROjCNATV4NqBbC+GQ5+Fi+V1IOEWdqkKnBh0iJwOoeB34Hwm2gY7O+hRt3w==", "username"=>"admin_username", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin_username"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 277ms (ActiveRecord: 1.0ms | Allocations: 1700)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:24:57 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 276)
+Completed 200 OK in 50ms (Views: 37.3ms | ActiveRecord: 3.1ms | Allocations: 6747)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:25:34 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 271)
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 0.7ms | Allocations: 7156)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:25:37 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"wIH32ov+rIIcsrhjF4C7DGBARccZhk68IMACMxlcqE7wuBf+KOqu/px2aTEgG/c82RKcglVEYTiXdPTLQxPOcA==", "username"=>"sea", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "sea"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 7ms (ActiveRecord: 0.8ms | Allocations: 1641)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:25:37 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 112)
+Completed 200 OK in 19ms (Views: 12.7ms | ActiveRecord: 2.2ms | Allocations: 5993)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:25:49 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"kYdPisBloSdtNCsZqZ4Ii03KDjA9PTE16cTPTVXAuasB+4v6Rg5iNjS7s3Luophb88g6xaxQtonljH/rdKi00g==", "username"=>"admin_username", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin_username"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/
+Completed 200 OK in 271ms (ActiveRecord: 0.7ms | Allocations: 1723)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:25:49 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 2.5ms | Allocations: 468)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 0.4ms | Allocations: 6877)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:25:59 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"YqN8xWxHVC+mBsNEz9qOsO3y8TR/mbHpTy3aITxtdk5Smpzhz1NWUybCEhb4QcKAVKAocTNbnm34mSzZZiIQcA==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 5ms (ActiveRecord: 0.8ms | Allocations: 1657)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:25:59 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 115)
+Completed 200 OK in 24ms (Views: 19.2ms | ActiveRecord: 0.3ms | Allocations: 5993)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:26:18 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"Xm2ZffLNtoLWU8qJZ6Hg6kA6IFDzv/oAWaU1AYjKwonOEV0NdKZ1k4/cUuIgnXA6/jgUpWLSfbxV7YWnqaLP8A==", "username"=>"asdlkjf", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "asdlkjf"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 5ms (ActiveRecord: 0.7ms | Allocations: 1668)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:26:18 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 112)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 1.4ms | Allocations: 6006)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:26:22 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"KvljYeNwpR9mZmUhI5/kS+EuM/T+cctaAmjIIg9Dd+26hacRZRtmDj/p/Upko3SbXywHAW8cTOYOIHiELit6lA==", "username"=>"asdf;lkgd", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "asdf;lkgd"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 7ms (ActiveRecord: 0.9ms | Allocations: 1688)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:26:22 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 113)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 1.0ms | Allocations: 6004)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:26:25 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"P+aqZu3j6JyXTeiZQgs/g2A79PGuOpQGKeBwiYxYGlevmm4Wa4grjc7CcPIFN69T3jnABD9XE7olqMAvrTAXLg==", "username"=>"asdfk", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "asdfk"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 4ms (ActiveRecord: 0.6ms | Allocations: 1676)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:26:25 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 112)
+Completed 200 OK in 15ms (Views: 9.4ms | ActiveRecord: 0.5ms | Allocations: 5992)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:28:11 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 112)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.3ms | Allocations: 6000)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:28:21 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 112)
+Completed 200 OK in 13ms (Views: 9.7ms | ActiveRecord: 0.3ms | Allocations: 5992)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:28:29 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"Xh0fg7nCXCfhD6MmmVsXLJ2CKEp9DjRYAZstM1s//wPOYdvzP6mfNriAO03eZ4f8I4Acv+xjs+QN052Velfyeg==", "username"=>"asdfafg", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "asdfafg"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 7ms (ActiveRecord: 0.6ms | Allocations: 1670)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:28:29 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 112)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 0.4ms | Allocations: 6021)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:29:46 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"DRTZpNkPSbBHn9KDsXz/6/PSEcDB4XOb2CvHJTTIANadaB3UX2SKoR4QSuj2QG87TdAlNVCM9CfUY3eDFaANrw==", "username"=>"admin_username", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin_username"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/
+Completed 200 OK in 265ms (ActiveRecord: 0.5ms | Allocations: 1737)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:29:46 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 10.6ms | Allocations: 3654)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.0ms | Allocations: 5484)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"signup", :controller=>"session"}):
+    57: <% end %>
+    58: <ul>
+    59:   <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+    60:   <li><%= link_to("Sign Up", controller: "session", action: "signup") %></li>
+    61:   <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+    62: </ul>
+  
+app/views/msgr/login.html.erb:60
+Started GET "/" for ::1 at 2019-10-24 00:30:10 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 2.1ms | Allocations: 468)
+Completed 200 OK in 25ms (Views: 20.6ms | ActiveRecord: 0.3ms | Allocations: 7361)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:30:12 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"DGNDei9H3CpT1/Iql5QlP+CFCTjrCbNwTVg30WlcPyU8WqNejFPeVtMTI3igD2kPWdfQfafLnPT67MEpMxNZGw==", "username"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", ""], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/login
+Completed 200 OK in 6ms (ActiveRecord: 0.7ms | Allocations: 1651)
+
+
+Started GET "/login" for ::1 at 2019-10-24 00:30:13 +1100
+Processing by SessionController#new as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 276)
+Completed 200 OK in 26ms (Views: 20.5ms | ActiveRecord: 2.6ms | Allocations: 6740)
+
+
+Started POST "/login" for ::1 at 2019-10-24 00:30:22 +1100
+Processing by SessionController#create as JS
+  Parameters: {"authenticity_token"=>"Cq542reG94K5hLQclMDN3aMpYSBSOiAjRyPaUuY6nbaa0ryqMe00k+ALLHfT/F0NHStV1cNXp59La2r0x1KQzw==", "username"=>"admin_username", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "admin_username"], ["LIMIT", 1]]
+  ↳ app/controllers/session_controller.rb:11:in `create'
+Redirected to http://localhost:3000/
+Completed 200 OK in 266ms (ActiveRecord: 0.6ms | Allocations: 1709)
+
+
+Started GET "/" for ::1 at 2019-10-24 00:30:22 +1100
+Processing by MsgrController#login as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/login.html.erb within layouts/application
+  Rendered msgr/login.html.erb within layouts/application (Duration: 1.4ms | Allocations: 253)
+Completed 200 OK in 14ms (Views: 8.4ms | ActiveRecord: 0.7ms | Allocations: 6113)
+
+
+Started GET "/splash" for ::1 at 2019-10-24 00:30:32 +1100
+  
+ActionController::RoutingError (No route matches [GET] "/splash"):
+  
+actionpack (6.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.0) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.0) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.0) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.0) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.0.7) lib/webpacker/dev_server_proxy.rb:29:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.0) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/msgr/splash" for ::1 at 2019-10-24 00:30:45 +1100
+Processing by MsgrController#splash as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `fetch_user'
+  Rendering msgr/splash.html.erb within layouts/application
+  Rendered msgr/splash.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1262)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms | Allocations: 2484)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"signup", :controller=>"session"}):
+    12: <% end %>
+    13: <ul>
+    14:   <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+    15:   <li><%= link_to("Sign Up", controller: "session", action: "signup") %></li>
+    16:   <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+    17: </ul>
+  
+app/views/msgr/splash.html.erb:15

@@ -19,3 +19,32 @@
 </div>
 
 <a class="btn btn-success" href="msgr/splash">To Splash</a>
+
+<h1> authorisation testing </h1>
+
+<ul>
+  <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+  <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+</ul>
+
+<h1>Login</h1>
+<%= form_with(url: "/login", method: "post") do %>
+  <div>
+    <label>
+      Username
+      <input type="string" name="username"/>
+    </label>
+  </div>
+  <div>
+    <label>
+      Password
+      <input type="password" name="password"/>
+    </label>
+    <div>
+      <input type="submit" value="Login"/>
+    </div>
+  </div>
+<% end %>
+<div>
+  <%= @error_message %>
+</div>

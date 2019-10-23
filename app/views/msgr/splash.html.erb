@@ -3,3 +3,15 @@
 <a class="btn btn-success" href="friends_list">To Friends</a>
 <a class="btn btn-success" href="chatrooms_list">To Chatrooms</a>
 <a class="btn btn-success" href="profile">To Profile</a>
+
+<h1>Home</h1>
+<% if @logged_in_user.nil? %>
+  <h2>Sign-in</h2>
+<% else %>
+  <h2>Welcome back, <%= @logged_in_user.name %>!</h2>
+<% end %>
+<ul>
+  <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
+  <li><%= link_to("Sign Up", controller: "session", action: "signup") %></li>
+  <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
+</ul>
