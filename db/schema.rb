@@ -16,21 +16,31 @@ ActiveRecord::Schema.define(version: 2019_10_23_123702) do
   enable_extension "plpgsql"
 
   create_table "chatroom_messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "chatroom_id"
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "chatroom_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "chatroom_id"
+    t.boolean "is_admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "chatrooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "room_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_friends", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

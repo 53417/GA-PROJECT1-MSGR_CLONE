@@ -8,4 +8,29 @@
 
 include BCrypt
 
-User.create(displayname: 'admin', password_digest: Password.create('password'), age: 23, username: 'admin_username')
+user1 = User.create(displayname: 'user1', password_digest: Password.create('password'), age: 21, username: 'login1');
+user2 = User.create(displayname: 'user2', password_digest: Password.create('password'), age: 22, username: 'login2');
+user3 = User.create(displayname: 'user3', password_digest: Password.create('password'), age: 23, username: 'login3');
+
+room1 = Chatroom.create(user_id: user1.id, room_name: 'room1');
+room2 = Chatroom.create(user_id: user2.id, room_name: 'room2');
+room3 = Chatroom.create(user_id: user3.id, room_name: 'room3');
+
+ChatroomUser.create(user_id: user1.id, chatroom_id: room1.id, is_admin: true);
+ChatroomUser.create(user_id: user2.id, chatroom_id: room1.id, is_admin: false);
+ChatroomUser.create(user_id: user3.id, chatroom_id: room1.id, is_admin: false);
+ChatroomUser.create(user_id: user2.id, chatroom_id: room2.id, is_admin: true);
+ChatroomUser.create(user_id: user1.id, chatroom_id: room2.id, is_admin: false);
+ChatroomUser.create(user_id: user3.id, chatroom_id: room3.id, is_admin: true);
+
+ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'message1');
+ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'message2');
+ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'message3');
+ChatroomMessage.create(user_id: user2.id, chatroom_id: room1.id, message: '2s message');
+ChatroomMessage.create(user_id: user2.id, chatroom_id: room2.id, message: 'init 2');
+ChatroomMessage.create(user_id: user3.id, chatroom_id: room3.id, message: 'init 3');
+
+UserFriend.create(user_id: user1.id, friend_id: user2.id)
+UserFriend.create(user_id: user2.id, friend_id: user1.id)
+UserFriend.create(user_id: user1.id, friend_id: user3.id)
+UserFriend.create(user_id: user3.id, friend_id: user1.id)
