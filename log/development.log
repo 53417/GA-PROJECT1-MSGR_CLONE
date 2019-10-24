@@ -1858,3 +1858,13 @@ Processing by SessionController#new as HTML
 Completed 200 OK in 17066ms (Views: 17049.7ms | ActiveRecord: 0.0ms | Allocations: 1435898)
 
 
+Started GET "/login" for ::1 at 2019-10-24 19:22:45 +1100
+  [1m[35m (42.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 431)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/a00/Desktop/seifx01/projects/project1_msgr_clone/msgr_clone/public/packs
+Completed 200 OK in 10358ms (Views: 10344.7ms | ActiveRecord: 0.0ms | Allocations: 1426476)
+
+

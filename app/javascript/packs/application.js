@@ -17,8 +17,6 @@ require("bootstrap/dist/js/bootstrap")
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap'
-import './src/application.scss'
-import './src/custom.scss'
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
