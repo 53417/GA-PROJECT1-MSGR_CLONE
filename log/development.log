@@ -1848,3 +1848,13 @@ Migrating to CreateUserFriends (20191023123702)
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
   [1m[36mUserFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "user_friends" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["friend_id", 1], ["created_at", "2019-10-24 08:05:30.946863"], ["updated_at", "2019-10-24 08:05:30.946863"]]
   [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/login" for ::1 at 2019-10-24 19:16:12 +1100
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionController#new as HTML
+  Rendering session/new.html.erb within layouts/application
+  Rendered session/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 431)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/a00/Desktop/seifx01/projects/project1_msgr_clone/msgr_clone/public/packs
+Completed 200 OK in 17066ms (Views: 17049.7ms | ActiveRecord: 0.0ms | Allocations: 1435898)
+
+
