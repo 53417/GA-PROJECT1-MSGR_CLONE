@@ -1,17 +1,43 @@
 <h1>SPLASH HTML</h1>
 
-<a class="btn btn-success" href="friends_list">To Friends</a>
-<a class="btn btn-success" href="chatrooms_list">To Chatrooms</a>
-<a class="btn btn-success" href="profile">To Profile</a>
+<div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
+  <div class="card bg-dark text-white">
+    <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
+    <div class="card-img-overlay d-flex">
+      <h2 class="my-auto card-title align-items-center d-flex justify-content-center"><%= @logged_in_user.displayname %></h2>
+    </div>
+  </div>
+</div>
 
-<h1>Home</h1>
-<% if @logged_in_user.nil? %>
-  <h2>Sign-in</h2>
-<% else %>
-  <h2>Welcome back, <%= @logged_in_user.name %>!</h2>
-<% end %>
-<ul>
-  <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
-  <li><%= link_to("Sign Up", controller: "session", action: "signup") %></li>
-  <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
-</ul>
+<div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
+  <a href="profile">
+    <div class="card bg-dark text-white">
+      <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
+      <div class="card-img-overlay d-flex">
+        <h2 class="my-auto card-title align-items-center d-flex justify-content-center">Profile</h2>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
+  <a href="friends_list">
+    <div class="card bg-dark text-white">
+      <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
+      <div class="card-img-overlay d-flex">
+        <h2 class="my-auto card-title align-items-center d-flex justify-content-center">Friends</h2>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
+  <a href="chatrooms_list">
+    <div class="card bg-dark text-white">
+      <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
+      <div class="card-img-overlay d-flex">
+        <h2 class="my-auto card-title align-items-center d-flex justify-content-center">Chats</h2>
+      </div>
+    </div>
+  </a>
+</div>

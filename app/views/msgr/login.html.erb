@@ -4,47 +4,28 @@
     <img src="https://www.placecage.com/200/100" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">MSGR</h5>
-        <form class="form-inline">
+
+        <%= form_with(url: "/login", method: "post") do %>
             <div class="form-group mx-sm-3 mb-2">
                 <label for="inputPassword2" class="sr-only">Username</label>
-                <input type="string" class="form-control" id="input_username" placeholder="Username">
+                <input type="string" class="form-control" name="username" placeholder="Username">
             </div>
             <div class="form-group mx-sm-3 mb-2">
                 <label for="inputPassword2" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="input_password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-primary mb-2">Login</button>
-        </form>
+            <br>
+        <% end %>
+
+        <a class="btn btn-success"><%= link_to("Sign Up", controller: "session", action: "new") %></a>
+        <a class="btn btn-success"><%= link_to("Log Out", login_path, :method => :delete) %></a>
+
     </div>
+</div>
+
+<div>
+    <%= @error_message %>
 </div>
 
 <a class="btn btn-success" href="msgr/splash">To Splash</a>
-
-<h1> authorisation testing </h1>
-
-<ul>
-  <li><%= link_to("Sign Up", controller: "session", action: "new") %></li>
-  <li><%= link_to("Log Out", login_path, :method => :delete) %></li>
-</ul>
-
-<h1>Login</h1>
-<%= form_with(url: "/login", method: "post") do %>
-  <div>
-    <label>
-      Username
-      <input type="string" name="username"/>
-    </label>
-  </div>
-  <div>
-    <label>
-      Password
-      <input type="password" name="password"/>
-    </label>
-    <div>
-      <input type="submit" value="Login"/>
-    </div>
-  </div>
-<% end %>
-<div>
-  <%= @error_message %>
-</div>

@@ -1,5 +1,14 @@
 <h1>CHATROOM LIST HTML</h1>
 
-<a class="btn btn-success" href="chatroomid">To Chatroom 1</a>
-<a class="btn btn-success" href="chatroomid">To Chatroom 2</a>
-<a class="btn btn-success" href="chatroomid">To Chatroom 3</a>
+<% @chatrooms.each do |room| %>
+    <div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
+    <a href="">
+        <div class="card bg-dark text-white">
+        <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
+        <div class="card-img-overlay d-flex">
+            <h2 class="my-auto card-title align-items-center d-flex justify-content-center"><%= room.chatroom.room_name %></h2>
+        </div>
+        </div>
+    </a>
+    </div>
+<% end %>
