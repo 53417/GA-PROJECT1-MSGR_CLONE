@@ -22,7 +22,7 @@ class MsgrController < ApplicationController
         @friends = UserFriend.where(user_id: @logged_in_user)
         # @friends2 = UserFriend.joins("LEFT JOIN users ON users.id = 1 AND users.id = user_friends.friend_id")
         @friends2 = ActiveRecord::Base.connection.execute(sql)
-        #sql = "SELECT * FROM user_friends LEFT JOIN users ON users.id = user_friends.friend_id WHERE user_id = 1"
+        sql = "SELECT * FROM user_friends LEFT JOIN users ON users.id = user_friends.friend_id WHERE user_id = 1"
         #UserFriend.where(user_id: @logged_in_user).joins("LEFT JOIN users ON users.id = user_friends.friend_id")
     end
 
