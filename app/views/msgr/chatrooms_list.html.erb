@@ -2,7 +2,7 @@
 
 <% @chatrooms.each do |room| %>
     <div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
-    <a href="">
+    <a href="chatroom/<%= room.chatroom_id.to_s %>">
         <div class="card bg-dark text-white">
         <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
         <div class="card-img-overlay d-flex">

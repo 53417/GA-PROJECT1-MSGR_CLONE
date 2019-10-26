@@ -1,2 +1,33 @@
 <h1>INSDE A CHATROOM HTML</h1>
 
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Add people</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><%= @chatroom.room_name %></a>
+      </li>
+    </ul>
+  </div>
+
+  <% @messages.each do |message| %>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><%= message.user.displayname %></span>
+            </div>
+            <p class="form-control" aria-describedby="basic-addon3"><%= message.message %></p>
+        </div>
+    <% end %>
+
+</div>
+
+<div class="fixed-bottom">
+    <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Message" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+        </div>
+    </div>
+</div>
