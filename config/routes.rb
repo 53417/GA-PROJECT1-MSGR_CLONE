@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/msgr/splash' => 'msgr#splash'
   get '/msgr/friends_list' => 'msgr#friends_list'
   get '/msgr/chatrooms_list' => 'msgr#chatrooms_list'
-  get '/msgr/chatroomid' => 'msgr#chatroom'
+  get '/msgr/:id' => 'msgr#chatroom'
   get '/msgr/profile' => 'msgr#profile'
 end
 
