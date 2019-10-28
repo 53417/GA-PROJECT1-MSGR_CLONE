@@ -1,14 +1,25 @@
-<h1>CHATROOM LIST HTML</h1>
-
-<% @chatrooms.each do |room| %>
-    <div class="mx-auto input-box col-sm-12 col-md-11 col-lg-10">
-    <a href="chatroom/<%= room.chatroom_id.to_s %>">
-        <div class="card bg-dark text-white">
-        <img src="https://www.placecage.com/300/100" class="card-img" alt="...">
-        <div class="card-img-overlay d-flex">
-            <h2 class="my-auto card-title align-items-center d-flex justify-content-center"><%= room.chatroom.room_name %></h2>
+<form action="/msgr/chatroom/<%= @roomid %>" method="post">
+    <div class="input-group mb-3">
+    <input type="text" name="message" class="form-control" placeholder="Friend name" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
         </div>
-        </div>
-    </a>
     </div>
-<% end %>
+</form>
+
+<div class="card-deck text-center">
+
+    <% @chatrooms.each do |room| %>
+        <div class="col-sm-4">
+            <div class="card">
+                <a href="chatroom/<%= room.chatroom_id.to_s %>">
+                    <img src="https://www.placecage.com/g/100/50" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= room.chatroom.room_name %></h5>
+                    </div>
+                </a>
+            </div>
+        </div> 
+    <% end %>
+
+</div>

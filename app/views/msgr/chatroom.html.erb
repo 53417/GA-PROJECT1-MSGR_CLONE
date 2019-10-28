@@ -1,5 +1,3 @@
-<h1>INSDE A CHATROOM HTML</h1>
-
 <div class="card">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
@@ -24,10 +22,12 @@
 </div>
 
 <div class="fixed-bottom">
-    <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Message" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+    <form action="/msgr/chatroom/<%= @roomid %>" method="post">
+        <div class="input-group mb-3">
+        <input type="text" name="message" class="form-control" placeholder="Message" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>

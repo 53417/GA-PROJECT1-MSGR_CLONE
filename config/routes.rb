@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get '/msgr/friends_list' => 'msgr#friends_list'
   get '/msgr/chatrooms_list' => 'msgr#chatrooms_list'
   get '/msgr/chatroom/:id' => 'msgr#chatroom', :as => 'chatroom'
+  post '/msgr/chatroom/:id' => 'msgr#chatroom_newmessage'
   get '/msgr/profile' => 'msgr#profile'
+  post '/msgr/profile' => 'msgr#profile_update'
+  get '/msgr/profile/edit' => 'msgr#profile_edit'
 end
 
 # get '/planets' => 'planets#index'
