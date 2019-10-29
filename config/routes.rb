@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/msgr/chatroom/:id' => 'msgr#chatroom', :as => 'chatroom'
   post '/msgr/chatroom/:id' => 'msgr#chatroom_newmessage'
   get '/msgr/profile' => 'msgr#profile'
-  post '/msgr/profile' => 'msgr#profile_update'
+  post '/msgr/profile/edit' => 'msgr#profile_update'
   get '/msgr/profile/edit' => 'msgr#profile_edit'
 end
 

@@ -1,4 +1,8 @@
 class MsgrController < ApplicationController
+    
+    before_action :set_activity, only: [:show, :edit, :update, :destroy]
+    skip_before_action :verify_authenticity_token
+    
     def login
         @logged_in_user = User.find_by :id => session[:user_id]
     end
@@ -18,7 +22,7 @@ class MsgrController < ApplicationController
         profile.displayname = params[:edit_displayname]
         profile.age = params[:edit_age]
         profile.save
-        redirect_to "msgr/profile"
+        redirect_to :controller => 'msgr', :action => 'profile'
     end
 
     def profile_edit
@@ -48,12 +52,12 @@ class MsgrController < ApplicationController
 
     def chatroom_newmessage
         @logged_in_user = User.find_by :id => session[:user_id]
-        message = chatroom_message.new
+        message = ChatroomMessage.new
         message.user_id = @logged_in_user.id
         message.chatroom_id = params[:id]
         message.message = params[:message]
         message.save
-        redirect_to "/splash"
+        redirect_to :controller => 'msgr', :action => 'chatroom'
     end
 
 end
