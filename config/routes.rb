@@ -7,9 +7,13 @@ Rails.application.routes.draw do
 
   get '/msgr/splash' => 'msgr#splash'
   get '/msgr/friends_list' => 'msgr#friends_list'
+  post '/msgr/friends_list/add' => 'msgr#friends_list_add_friend'
   get '/msgr/chatrooms_list' => 'msgr#chatrooms_list'
   get '/msgr/chatroom/:id' => 'msgr#chatroom', :as => 'chatroom'
   post '/msgr/chatroom/:id' => 'msgr#chatroom_newmessage'
+  post 'msgr/chatroom/:id/update' => "msgr#chatroom_update"
+  post 'msgr/chatroom/:id/add_member' => "msgr#chatroom_add_member"
+  post 'msgr/chatroom/:id/leave' => "msgr#chatroom_leave"
   get '/msgr/profile' => 'msgr#profile'
   post '/msgr/profile/edit' => 'msgr#profile_update'
   get '/msgr/profile/edit' => 'msgr#profile_edit'

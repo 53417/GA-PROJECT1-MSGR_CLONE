@@ -1,24 +1,49 @@
-<div class="card">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Add people</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><%= @chatroom.room_name %></a>
-      </li>
-    </ul>
-  </div>
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <div class="btn-group" style="width: 100%">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+        <%= @chatroom.room_name %>
+      </button>
+      <div class="dropdown-menu dropdown-menu-lg" style="width: 100%">
+        <div class="dropdown-item">
 
-  <% @messages.each do |message| %>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><%= message.user.displayname %></span>
+          <form action="/msgr/chatroom/<%= @roomid %>/update" method="post">
+            <div class="input-group mb-3">
+            <input type="text" name="update_room_name" class="form-control" placeholder="<%= @chatroom.room_name %>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Change Room Name</button>
+                </div>
             </div>
-            <p class="form-control" aria-describedby="basic-addon3"><%= message.message %></p>
-        </div>
-    <% end %>
+          </form>
 
+          <form action="/msgr/chatroom/<%= @roomid %>/add_member" method="post">
+            <div class="input-group mb-3">
+            <input type="text" name="add_member_username" class="form-control" placeholder="Friends username" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Add member</button>
+                </div>
+            </div>
+          </form>
+
+          <form action="/msgr/chatroom/<%= @roomid %>/leave" method="post">
+            <button type="submit" class="btn btn-outline-danger float-right">Leave</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="start_from_bot">
+  <% @messages.each do |message| %>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><%= message.user.username %></span>
+        </div>
+        <p class="form-control" aria-describedby="basic-addon3"><%= message.message %></p>
+    </div>
+  <% end %>
 </div>
 
 <div class="fixed-bottom">

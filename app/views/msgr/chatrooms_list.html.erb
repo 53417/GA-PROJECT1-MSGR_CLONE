@@ -13,9 +13,13 @@
         <div class="col-sm-4">
             <div class="card">
                 <a href="chatroom/<%= room.chatroom_id.to_s %>">
-                    <img src="https://www.placecage.com/g/100/50" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><%= room.chatroom.room_name %></h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <p><%= room.updated_at %></p>
+                            </li>
+                        </ul>
                     </div>
                 </a>
             </div>

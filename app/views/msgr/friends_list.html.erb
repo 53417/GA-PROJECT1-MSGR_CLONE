@@ -1,9 +1,8 @@
-<form action="/msgr/chatroom/<%= @roomid %>" method="post">
+<form action="/msgr/friends_list/add" method="post">
     <div class="input-group mb-3">
-    <input type="text" name="message" class="form-control" placeholder="Friend name" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="text" name="add_friend_username" class="form-control" placeholder="Friend's username" aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
             <button class="btn btn-outline-success" type="submit" id="button-addon2">Add</button>
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
         </div>
     </div>
 </form>
@@ -12,13 +11,15 @@
 
     <% @friends.each do |friend| %>
         <div class="col-sm-4">
-            <div class="card">
-                <img src="https://www.placecage.com/g/50/50" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><%= friend["displayname"] %></h5>
-                    <p class="card-text">Status</p>
+            <a href="">
+                <div class="card" style="margin-bottom: 40px">
+                    <img src="https://www.placecage.com/g/50/50" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= friend["username"] %></h5>
+                        <p class="card-text"><%= friend["age"] %>/S/L</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div> 
     <% end %>
 

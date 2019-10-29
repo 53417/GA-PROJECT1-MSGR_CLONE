@@ -38,6 +38,19 @@ class MsgrController < ApplicationController
         # @friends3 = UserFriend.where(user_id: @logged_in_user).joins("LEFT JOIN users ON users.id = user_friends.friend_id") #broken
     end
 
+    def friends_list_add_friend
+        friend = User.find_by :username => params[:add_friend_username]
+        new_friend = UserFriend.new
+        new_friend.user_id = session[:user_id]
+        new_friend.friend_id = friend.id
+        new_friend.save
+        redirect_to :controller => 'msgr', :action => 'friends_list'
+    end
+
+    def friends_list_delete_friend
+
+    end
+
     def chatrooms_list
         @logged_in_user = User.find_by :id => session[:user_id]
         @chatrooms = ChatroomUser.where(user_id: @logged_in_user)
@@ -50,6 +63,24 @@ class MsgrController < ApplicationController
         @chatroom = Chatroom.find_by :id => @roomid
     end
 
+    def chatroom_update
+        chatroom = Chatroom.find_by :id => params[:id]
+        chatroom.room_name = params[:update_room_name]
+        chatroom.save
+        redirect_to :controller => 'msgr', :action => 'chatroom'
+    end
+
+    def chatroom_add_member
+        chatroom = Chatroom.find_by :id => params[:id]
+        member = User.find_by :username => params[:add_member_username]
+        new_member = ChatroomUser.new
+        new_member.user_id = member.id
+        new_member.chatroom_id = params[:id]
+        new_member.is_admin = false
+        new_member.save
+        redirect_to :controller => 'msgr', :action => 'chatroom'
+    end
+
     def chatroom_newmessage
         @logged_in_user = User.find_by :id => session[:user_id]
         message = ChatroomMessage.new
@@ -60,4 +91,14 @@ class MsgrController < ApplicationController
         redirect_to :controller => 'msgr', :action => 'chatroom'
     end
 
+    def chatroom_leave
+        @chatroom = params[:id]
+        chatroom_users = ChatroomUser.where({user_id: session[:user_id], chatroom_id: @chatroom })
+        chatroom_users.each{|link| link.destroy}
+        redirect_to :controller => 'msgr', :action => 'chatrooms_list'
+    end
+
 end
+
+# User.where({ name: "Joe", email: "joe@example.com" })
+# SELECT * FROM users WHERE name = 'Joe' AND email = 'joe@example.com'
