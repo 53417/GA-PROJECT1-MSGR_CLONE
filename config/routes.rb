@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root to: 'msgr#login'
 
-  get '/login' => 'session#new'         # This will be our sign-in page.
+  get '/login' => 'msgr#login'         # This will be our sign-in page.
   post '/login' => 'session#create'     # This will be the path to which the sign-in form is posted
   delete '/login' => 'session#destroy'  # This will be the path users use to log-out.
+  post '/create' => 'session#createuser'
 
   get '/msgr/splash' => 'msgr#splash'
   get '/msgr/friends_list' => 'msgr#friends_list'
   post '/msgr/friends_list/add' => 'msgr#friends_list_add_friend'
+  post '/msgr/friends_list/:id/delete' => 'msgr#friends_list_delete_friend'
   get '/msgr/chatrooms_list' => 'msgr#chatrooms_list'
   get '/msgr/chatroom/:id' => 'msgr#chatroom', :as => 'chatroom'
   post '/msgr/chatroom/:id' => 'msgr#chatroom_newmessage'

@@ -1,34 +1,45 @@
 <div class="row">
-  <div class="mx-auto input-box col-sm-12 col-md-10 col-lg-18">
+  <div class="mx-auto input-box col-sm-12 col-md-9 col-lg-6">
     <div class="card mb-3">
-      <img class="card-img-top" src="https://www.placecage.com/g/300/100" alt="Card image cap">
+      <img class="card-img-top" src="<%= @logged_in_user.display_pic %>" alt="Card image cap">
       
       <form action="/msgr/profile/edit" method="post">
         <div class="card-body">
-            <h5 class="card-title">Username</h5>
+            <h5 class="card-title">Username: <%= @logged_in_user.username %></h5>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Display Picture</h5>
             <div class="form-group row">
                 <div class="col-sm-10">
-                <input type="string" class="form-control" name="edit_username" id="edit_username" value="<%= @logged_in_user.username %>">
+                <input type="string" class="form-control" name="edit_display_pic" value="<%= @logged_in_user.display_pic %>">
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <h5 class="card-title">Display name</h5>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                <input type="string" class="form-control" name="edit_displayname" id="edit_displayname" value="<%= @logged_in_user.displayname %>">
-                </div>
-            </div>
+          <h5 class="card-title">Age</h5>
+          <div class="form-group row">
+              <div class="col-sm-10">
+              <input type="integer" class="form-control" name="edit_age" id="edit_age" value="<%= @logged_in_user.age %>">
+              </div>
+          </div>
         </div>
         <div class="card-body">
-            <h5 class="card-title">Age</h5>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                <input type="integer" class="form-control" name="edit_age" id="edit_age" value="<%= @logged_in_user.age %>">
-                </div>
-            </div>
+          <h5 class="card-title">Sex</h5>
+          <div class="form-group row">
+              <div class="col-sm-10">
+              <input type="integer" class="form-control" name="edit_sex" value="<%= @logged_in_user.sex %>">
+              </div>
+          </div>
         </div>
-          <button type="submit" class="btn btn-outline-success">Save</button>
+        <div class="card-body">
+          <h5 class="card-title">Location</h5>
+          <div class="form-group row">
+              <div class="col-sm-10">
+              <input type="integer" class="form-control" name="edit_location" value="<%= @logged_in_user.location %>">
+              </div>
+          </div>
+        </div>
+          <button type="submit" class="btn btn-outline-success" style="width: 100%">Save</button>
       </form>
 
       <div class="card-body">

@@ -1,21 +1,25 @@
 <div class="row">
-  <div class="mx-auto input-box col-sm-12 col-md-10 col-lg-18">
+  <div class="mx-auto input-box col-sm-12 col-md-9 col-lg-6">
     <div class="card mb-3">
-      <img class="card-img-top" src="https://www.placecage.com/g/300/100" alt="Card image cap">
+      <img class="card-img-top" src=<%= @logged_in_user.display_pic %> alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Username</h5>
         <p class="card-text"><%= @logged_in_user.username %></p>
       </div>
       <div class="card-body">
-        <h5 class="card-title">Display name</h5>
-        <p class="card-text"><%= @logged_in_user.displayname %></p>
-      </div>
-      <div class="card-body">
         <h5 class="card-title">Age</h5>
         <p class="card-text"><%= @logged_in_user.age %></p>
       </div>
+      <div class="card-body">
+        <h5 class="card-title">Sex</h5>
+        <p class="card-text"><%= @logged_in_user.sex %></p>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Location</h5>
+        <p class="card-text"><%= @logged_in_user.location %></p>
+      </div>
       <a href="/msgr/profile/edit">
-        <button type="button" class="btn btn-outline-primary">Edit</button>
+        <button type="button" class="btn btn-outline-primary" style="width: 100%">Edit</button>
       </a>
       <div class="card-body">
       <p class="card-text"><small class="text-muted">Last updated at <%= @logged_in_user.created_at %></small></p>

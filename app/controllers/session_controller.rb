@@ -1,5 +1,8 @@
 class SessionController < ApplicationController
 
+    before_action :set_activity, only: [:show, :edit, :update, :destroy]
+    skip_before_action :verify_authenticity_token
+
     def new
     # This is the action for user login. The view will have the login form template.
     end
@@ -22,6 +25,15 @@ class SessionController < ApplicationController
             flash[:error] = 'Invalid credentials'
             redirect_to root_path
         end
+    end
+
+    def createuser
+        salt = BCrypt::Engine.generate_salt
+        new_user = User.new
+        new_user.username = params[:signup_username]
+        new_user.password_digest = BCrypt::Engine.hash_secret(params[:signup_password], salt)
+        new_user.save
+        redirect_to root_path
     end
 
     # This is the action to which the user sign-out delete request is posted.

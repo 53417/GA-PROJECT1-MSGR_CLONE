@@ -8,9 +8,9 @@
 
 include BCrypt
 
-user1 = User.create(displayname: 'user1', password_digest: Password.create('password'), age: 21, username: 'login1');
-user2 = User.create(displayname: 'user2', password_digest: Password.create('password'), age: 22, username: 'login2');
-user3 = User.create(displayname: 'user3', password_digest: Password.create('password'), age: 23, username: 'login3');
+user1 = User.create(username: 'Sean', password_digest: Password.create('password'), age: 21, location: 'Sydney', sex: 'm', display_pic: 'https://www.placecage.com/300/200');
+user2 = User.create(username: 'Othersean', password_digest: Password.create('password'), age: 18, location: 'Cali', sex: 'f', display_pic: 'https://www.placecage.com/300/200');
+user3 = User.create(username: 'anotherone', password_digest: Password.create('password'), age: 23, location: 'Alaska', sex: 'heli', display_pic: 'https://www.placecage.com/300/200');
 
 room1 = Chatroom.create(user_id: user1.id, room_name: 'room1');
 room2 = Chatroom.create(user_id: user2.id, room_name: 'room2');
@@ -23,7 +23,7 @@ ChatroomUser.create(user_id: user2.id, chatroom_id: room2.id, is_admin: true);
 ChatroomUser.create(user_id: user1.id, chatroom_id: room2.id, is_admin: false);
 ChatroomUser.create(user_id: user3.id, chatroom_id: room3.id, is_admin: true);
 
-ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'message1');
+ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'hello');
 ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'message2');
 ChatroomMessage.create(user_id: user1.id, chatroom_id: room1.id, message: 'message3');
 ChatroomMessage.create(user_id: user2.id, chatroom_id: room1.id, message: '2s message');

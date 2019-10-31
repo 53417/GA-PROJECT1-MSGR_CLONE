@@ -18,9 +18,10 @@ class MsgrController < ApplicationController
 
     def profile_update
         profile = User.find_by :id => session[:user_id]
-        profile.username = params[:edit_username]
-        profile.displayname = params[:edit_displayname]
+        profile.display_pic = params[:edit_display_pic]
         profile.age = params[:edit_age]
+        profile.sex = params[:edit_sex]
+        profile.location = params[:edit_location]
         profile.save
         redirect_to :controller => 'msgr', :action => 'profile'
     end
@@ -48,7 +49,11 @@ class MsgrController < ApplicationController
     end
 
     def friends_list_delete_friend
-
+        @friend = params[:id]
+        @user = session[:user_id]
+        friends_list = UserFriend.where(user_id: @user, friend_id: @friend)
+        friends_list.each{|link| link.destroy}
+        redirect_to :controller => 'msgr', :action => 'friends_list'
     end
 
     def chatrooms_list
@@ -60,6 +65,7 @@ class MsgrController < ApplicationController
         @roomid = params[:id]
         @messages = ChatroomMessage.where(chatroom_id: @roomid)
         @chatroom_users = ChatroomUser.where(chatroom_id: @roomid)
+        @members_detailed = ActiveRecord::Base.connection.exec_query("SELECT * FROM chatroom_users LEFT JOIN users ON users.id = chatroom_users.user_id WHERE chatroom_id = #{@roomid}")
         @chatroom = Chatroom.find_by :id => @roomid
     end
 

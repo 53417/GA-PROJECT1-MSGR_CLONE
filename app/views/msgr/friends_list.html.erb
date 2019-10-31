@@ -11,15 +11,16 @@
 
     <% @friends.each do |friend| %>
         <div class="col-sm-4">
-            <a href="">
                 <div class="card" style="margin-bottom: 40px">
-                    <img src="https://www.placecage.com/g/50/50" class="card-img-top" alt="...">
+                    <img src="<%= friend["display_pic"] %>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><%= friend["username"] %></h5>
-                        <p class="card-text"><%= friend["age"] %>/S/L</p>
+                        <p class="card-text"><%= friend["age"] %>/<%= friend["sex"] %>/<%= friend["location"] %></p>
                     </div>
+                    <form action="/msgr/friends_list/<%= friend["id"] %>/delete" method="post">
+                        <button type="submit" class="btn btn-outline-danger" style="width: 100%">Unfriend</button>
+                    </form>
                 </div>
-            </a>
         </div> 
     <% end %>
 
