@@ -32,6 +32,10 @@ class SessionController < ApplicationController
         new_user = User.new
         new_user.username = params[:signup_username]
         new_user.password_digest = BCrypt::Engine.hash_secret(params[:signup_password], salt)
+        new_user.age = 18
+        new_user.sex = "f"
+        new_user.location = "Cali"
+        new_user.display_pic = "https://www.placecage.com/300/200"
         new_user.save
         redirect_to root_path
     end
