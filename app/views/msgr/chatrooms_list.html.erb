@@ -1,6 +1,6 @@
-<form action="/msgr/chatroom/<%= @roomid %>" method="post">
+<form action="/msgr/chatrooms_list" method="post">
     <div class="input-group mb-3">
-    <input type="text" name="message" class="form-control" placeholder="Room name" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="text" name="room_search" class="form-control" placeholder="Room name" aria-label="Recipient's username" aria-describedby="button-addon2">
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Join</button>
         </div>
@@ -26,4 +26,10 @@
         </div> 
     <% end %>
 
+</div>
+
+<div class="fixed-bottom">
+    <form action="/msgr/chatrooms_list/create" method="post">
+        <button type="submit" class="btn btn-outline-success" style="width: 100%">Create Room</button>
+    </form>
 </div>

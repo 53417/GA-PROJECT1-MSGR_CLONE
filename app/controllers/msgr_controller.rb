@@ -61,6 +61,32 @@ class MsgrController < ApplicationController
         @chatrooms = ChatroomUser.where(user_id: @logged_in_user)
     end
 
+    def chatrooms_list_join
+        @chatroom = Chatroom.where(room_name: params[:room_search])
+        @chatroom.each do |room|
+            join = ChatroomUser.new
+            join.user_id = session[:user_id]
+            join.chatroom_id = room.id
+            join.is_admin = false
+            join.save
+        end
+        redirect_to :controller => 'msgr', :action => 'chatrooms_list'
+    end
+
+    def chatrooms_list_create
+        @user = User.where(id: session[:user_id])
+        new_room = Chatroom.new
+        new_room.user_id = session[:user_id]
+        new_room.room_name = 'New chatroom'
+        new_room.save
+        room_user = ChatroomUser.new
+        room_user.user_id = session[:user_id]
+        room_user.chatroom_id = new_room.id
+        room_user.is_admin = true
+        room_user.save
+        redirect_to :controller => 'msgr', :action => 'chatrooms_list'
+    end
+
     def chatroom
         @roomid = params[:id]
         @messages = ChatroomMessage.where(chatroom_id: @roomid)

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post '/msgr/friends_list/add' => 'msgr#friends_list_add_friend'
   post '/msgr/friends_list/:id/delete' => 'msgr#friends_list_delete_friend'
   get '/msgr/chatrooms_list' => 'msgr#chatrooms_list'
+  post '/msgr/chatrooms_list' => 'msgr#chatrooms_list_join'
+  post '/msgr/chatrooms_list/create' => 'msgr#chatrooms_list_create'
   get '/msgr/chatroom/:id' => 'msgr#chatroom', :as => 'chatroom'
   post '/msgr/chatroom/:id' => 'msgr#chatroom_newmessage'
   post 'msgr/chatroom/:id/update' => "msgr#chatroom_update"
