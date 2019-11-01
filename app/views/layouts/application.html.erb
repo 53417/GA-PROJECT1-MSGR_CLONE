@@ -32,7 +32,11 @@
           <a><%= link_to("Log Out", controller: "session", action: "destroy") %></a>
       </div>
     </nav>
-
+    <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %>">
+                <%= value %>
+          </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

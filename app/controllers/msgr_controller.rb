@@ -41,11 +41,16 @@ class MsgrController < ApplicationController
 
     def friends_list_add_friend
         friend = User.find_by :username => params[:add_friend_username]
-        new_friend = UserFriend.new
-        new_friend.user_id = session[:user_id]
-        new_friend.friend_id = friend.id
-        new_friend.save
-        redirect_to :controller => 'msgr', :action => 'friends_list'
+        if friend.blank?
+            flash[:notice] = 'Username doesnt exist'
+            redirect_to :controller => 'msgr', :action => 'friends_list'
+        else
+            new_friend = UserFriend.new
+            new_friend.user_id = session[:user_id]
+            new_friend.friend_id = friend.id
+            new_friend.save
+            redirect_to :controller => 'msgr', :action => 'friends_list'
+        end
     end
 
     def friends_list_delete_friend
@@ -63,14 +68,19 @@ class MsgrController < ApplicationController
 
     def chatrooms_list_join
         @chatroom = Chatroom.where(room_name: params[:room_search])
-        @chatroom.each do |room|
-            join = ChatroomUser.new
-            join.user_id = session[:user_id]
-            join.chatroom_id = room.id
-            join.is_admin = false
-            join.save
+        if @chatroom.blank?
+            flash[:notice] = 'chatroom doesnt exist'
+            redirect_to :controller => 'msgr', :action => 'chatrooms_list'
+        else
+            @chatroom.each do |room|
+                join = ChatroomUser.new
+                join.user_id = session[:user_id]
+                join.chatroom_id = room.id
+                join.is_admin = false
+                join.save
+            end
+            redirect_to :controller => 'msgr', :action => 'chatrooms_list'
         end
-        redirect_to :controller => 'msgr', :action => 'chatrooms_list'
     end
 
     def chatrooms_list_create
@@ -105,12 +115,17 @@ class MsgrController < ApplicationController
     def chatroom_add_member
         chatroom = Chatroom.find_by :id => params[:id]
         member = User.find_by :username => params[:add_member_username]
-        new_member = ChatroomUser.new
-        new_member.user_id = member.id
-        new_member.chatroom_id = params[:id]
-        new_member.is_admin = false
-        new_member.save
-        redirect_to :controller => 'msgr', :action => 'chatroom'
+        if member.blank?
+            flash[:notice] = 'Username doesnt exist'
+            redirect_to :controller => 'msgr', :action => 'chatroom'
+        else
+            new_member = ChatroomUser.new
+            new_member.user_id = member.id
+            new_member.chatroom_id = params[:id]
+            new_member.is_admin = false
+            new_member.save
+            redirect_to :controller => 'msgr', :action => 'chatroom'
+        end
     end
 
     def chatroom_newmessage
